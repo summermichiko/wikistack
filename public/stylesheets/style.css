@@ -43,7 +43,6 @@ table {
 }
 
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -53,7 +52,7 @@ nav {
 	height: 60px;
 }
 
-a {
+nav a {
 	text-decoration: none;
 	color: #BFBFBF;
 }
@@ -94,21 +93,64 @@ ul {
 	margin-top: 25px;
 }
 
-li {
-	margin-left: 20px;
+li a {
+	text-decoration: none;
+	margin-left: 10px;
 	color: #58D6FC;
+
 }
 
 li:before {
     content: "• ";
-    color: black;
+    color: #212121;
+    margin-left: 25px;
 }
 
 p {
-	margin-top: 50px;
+	margin-top: 30px;
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-bottom: 20px;
 	color: #BFBFBF;
 }
 
+/* Create Page */
+
+form h3 {
+	margin-top: 45px;
+	margin-bottom: 5px;
+	font-size: 19px;
+}
+
+textarea {
+	width: 100%;
+	border-radius: 5px;
+	border: 2px solid #DBDBDB;
+}
+
+.bottomInput {
+	height: 400px;
+}
+
+button {
+	width: 80px;
+	height: 35px;
+	border-radius: 5px;
+	border: none;
+	background-color: #275AF2;
+	color: white;
+	font-size: 15px;
+	margin-top: 10px;
+}
+
+.editDelete a {
+	text-decoration: none;
+	color: #275AF2;
+}
+
+.editDelete {
+	margin-left: 80px;
+}
 
 
 

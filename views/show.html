@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+ 
+{% block title %}{{doc.title}}{% endblock %}
+ 
+{% block content %}
+
+
+  {% if edit %}
+
+  	<form action="/wiki/edit/{{doc.url_name}}/submit" method="post">
+		<textarea type="text" name="pageContent" class="bottomInput">{{doc.body}}</textarea>
+		<button type="submit">SUBMIT</button>
+	</form>
+
+  	{% else %}
+		{{doc.body|marked}}
+  		<div class="editDelete">
+	  		<a href="/wiki/edit/{{doc.url_name}}">Edit</a>
+	  		<a href="/wiki/delete/{{doc.url_name}}">Delete</a>
+  		</div>
+
+  {% endif %}
+
+
+{% endblock %}

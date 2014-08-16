@@ -1,20 +1,22 @@
 var express = require('express');
+var swig = require("swig");
+require("./filters")(swig);
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var swig = require("swig");
-
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var create = require("./routes/create");
+
+var wiki = require("./routes/wiki");
 
 var app = express();
 app.engine("html", swig.renderFile);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views')); //first views (express keyword), path, what views will point to
 app.set('view engine', 'html');
 
 app.use(favicon());
@@ -24,8 +26,12 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+console.log(create);
+
 app.use('/', routes);
-app.use('/users', users);
+app.use('/create', create);
+
+app.use("/wiki", wiki);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

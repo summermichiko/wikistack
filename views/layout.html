@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{% block title %}WikiStack{% endblock %}</title>
+    <title>WikiStack {{ title }}</title>
     <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   </head>
   <body>  	
+	<nav class="navigation">
+    	<div class="navWords">
+			<h3><a href="../">WIKISTACK</a><h3>
+			<h5><a href="/create">ADD PAGE</a></h5>
+		</div>
+  	</nav>
+  	{% if !browse %}  <!-- this will pull the title from show.html -->
+  		<section class="content">
+			<h1>{% block title %}{% endblock %}</h1>
+			<hr>
+		</section>
+  	{% endif %}
 
-   {% block content %}{% endblock %}
+	    {% block content %}{% endblock %} <!-- this will pull from index.html -->
+	    <p>Wikistack, Fullstack Academy</p>
   </body>
 </html>

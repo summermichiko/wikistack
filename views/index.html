@@ -1,23 +1,46 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <nav class="navigation">
-    	<div class="navWords">
-			<h3><a href="#">WIKISTACK</a><h3>
-			<h5><a href="#">ADD PAGE</a></h5>
-		</div>
-  	</nav>
+
+
+{% if browse %}
   	<section class="content">
 	  	<h1>BROWSE MY WIKISTACK</h1>
 	  	<hr>
 	  	<ul>
-	  		<li>Fullstack Home</li>
-	  		<li>About Me</li>
-	  		<li>My Projects</li>
-	  		<li>My City</li>
-	  		<li>Code I've Written</li>
+	  		<li><a href="#">Fullstack Home</a></li>
+	  		<li><a href="#">About Me</a></li>
+	  		<li><a href="#">My Projects</a></li>
+	  		<li><a href="#">My City</a></li>
+	  		<li><a href="#">Code I've Written</a></li>
 	  	</ul>
-	  	<p>Wikistack, Fullstack Academy</p>
-	</section>
 
-{% endblock %}
+	  	{% if docs.length > 0 %}
+ 			<ul>
+    		{% for doc in docs %}
+      			<li>{{doc|page_link}}</li> 
+       		{% endfor %}
+  			</ul>
+			{% else %}
+  			There are no pages. Why don't you <a href='/add'>add one</a>?
+		{% endif %}
+	</section>
+{% endif %}
+
+
+{% if create %}
+	<section class="content">
+		<h1>ADD A PAGE</h1>
+		<hr>
+		<form action="/create/submit" method="post">
+			<h3>PAGE TITLE</h3>
+			<textarea type="text" name="pageTitle" class="topInput"></textarea>
+			<h3>PAGE CONTENT</h3>
+			<textarea type="text" name="pageContent" class="bottomInput"></textarea>
+			<button type="submit">SUBMIT</button>
+		</form>
+	</section>
+{% endif %}
+
+
+{% endblock %}<a href="#">
