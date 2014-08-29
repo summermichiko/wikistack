@@ -1,8 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router();  //creating a router
 
-var mongoose = require('mongoose');
-var db = mongoose.connection;  //defines an object that has properties of our mongodb connection
+// var mongoose = require('mongoose');
+// var db = mongoose.connection;  //defines an object that has properties of our mongodb connection
 
 var models = require("../models");
 
@@ -29,10 +29,10 @@ router.post('/submit', function(req, res) { //we are in /create already!
   	"body":body, 
   	"url_name": url_name
   });
-  p.save();
+  p.save();  //saving to database
   // res.redirect('/');  this line will take the user back one page (the line under will take the user back to the home page)
-  res.redirect("/");  //will be redirected to home page when submit button is clicked
-  db.emit("postAdded"); //this will say that "postAdded" event happened when submit is clicked
+  // res.redirect("/");  //will be redirected to home page when submit button is clicked
+  // db.emit("postAdded"); //this will say that "postAdded" event happened when submit is clicked
 });
 
 module.exports = router;
